@@ -18,7 +18,9 @@ struct ImagePickerView: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            print("They selected something!")
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] else { return }
+            parent.selectedImage = image as! UIImage
+            dismiss()
         }
     }
     
