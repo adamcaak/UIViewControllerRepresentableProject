@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
-    class Coordinator {
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         let parent: ImagePickerView
         init(parent: ImagePickerView) {
             self.parent = parent
         }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            print("They selected something!")
+        }
     }
     
     func makeUIViewController(context: Self.Context) -> UIImagePickerController {
-        return UIImagePickerController()
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.delegate = context.coordinator
+        return imagePickerVC
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
