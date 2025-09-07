@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
+    @Binding var selectedImage: UIImage
+    @Environment(\.dismiss) private var dismiss
+    
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         let parent: ImagePickerView
         init(parent: ImagePickerView) {
