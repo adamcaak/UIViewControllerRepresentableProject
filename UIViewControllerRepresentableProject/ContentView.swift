@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var showImagePickerView: Bool = false
     @State private var selectedImage: UIImage?
+    @State private var image = UIImage()
+    
     var body: some View {
         VStack {
             Text("Choose an Image!")
